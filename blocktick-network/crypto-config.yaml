@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: Apache-2.0
+#
+OrdererOrgs:
+    - Name: Orderer
+      Domain: blocktick.com
+      EnableNodeOUs: true
+      Specs:
+        - Hostname: orderer
+          SANS:
+            - localhost
+PeerOrgs:
+    - Name: Org1
+      Domain: org1.blocktick.com
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org2
+      Domain: org2.blocktick.com
+      EnableNodeOUs: true
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+    - Name: Org3
+      Domain: org3.blocktick.com
+      EnableNodeOUs: true    
+      Template:
+        Count: 1
+        SANS:
+          - localhost
+      Users:
+        Count: 1
+  

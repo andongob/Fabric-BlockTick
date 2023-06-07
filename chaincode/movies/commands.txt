@@ -1,0 +1,41 @@
+peer chaincode install -n movies -v 1.0 -p github.com
+peer chaincode instantiate -n movies -v 1.0 -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["Init"]}'
+
+
+peer chaincode install -n movies -v 1.0 -p github.com
+peer chaincode upgrade -n movies -v 1.0 -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["Init"]}'
+
+
+data
+
+registerTheatre
+peer chaincode invoke -n movies -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["registerTheatre","{\"theatreName\":\"A Studios\",\"windows\":4,\"ticketsPerShow\":100,\"showsDaily\":4,\"sodaStock\":200,\"halls\":5}"]}'
+
+{"theatreName":"A Studios","windows":4,"ticketsPerShow":100,"showsDaily":4,"sodaStock":200,"halls":5}
+
+
+createSHow
+peer chaincode invoke -n movies -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["createShow","{\"TheatreNo\":4728,\"Shows\":[{\"movie\":\"Mission Impossible\",\"hallNo\":1},{\"movie\":\"Pirates of the Caribbean\",\"hallNo\":2},{\"movie\":\"Avengers\",\"hallNo\":3},{\"movie\":\"Iron Man\",\"hallNo\":4}]}"]}'
+
+{"TheatreNo":4184,"Shows":[{"movie":"Mission Impossible","hallNo":1},{"movie":"Pirates of the Caribbean","hallNo":2},{"movie":"Avengers","hallNo":3},{"movie":"Iron Man","hallNo":4}]}
+
+
+
+purchaseTicket
+peer chaincode invoke -n movies -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["purchaseTicket","{\"show\":{\"showID\":1},\"window\":{\"windowNo\":1},\"quantity\":}"]}'
+
+{"show":{"showID":1},"window":{"windowNo":1},"quantity":2}
+{\"show\":{\"showID\":1},\"window\":{\"windowNo\":1},\"quantity\":2}
+
+issueCoupon
+peer chaincode invoke -n movies -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["issueCoupon","{\"ticketNo\":6}"]}'
+{"ticketNo":6}
+
+availExchange
+peer chaincode invoke -n movies -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["availExchange","{\"ticketNo\":6}"]}'
+{"ticketNo":6}
+
+
+queryByString
+peer chaincode invoke -n movies -o orderer.blocktick.com:7050 -C mychannel -c '{"Args":["queryByString","{\"selector\":{\"docType\":\"SHOW\"}}"]}'
+{"selector":{"docTye":"SHOW"}}
