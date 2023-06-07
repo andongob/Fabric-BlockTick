@@ -14,7 +14,7 @@
 
 ## Arquitectura 
 
-![Arquitectura ](/Fabric-blockTick/img/APP_HLF_blocktick.png)
+![Arquitectura ](/img/APP_HLF_blocktick.png)
 
 ### Peers
 
@@ -58,7 +58,7 @@ Conceptualmente representan las configuraciones que van a representar la identid
 
     > Previsualización del archivo
 
-    [ir a archivo crypto-config.yml](/Fabric-blockTick/blocktick-network/crypto-config.yaml)
+    [ir a archivo crypto-config.yml](/blocktick-network/crypto-config.yaml)
 
 * Ejecutamos en la terminal el comando
 
@@ -76,7 +76,7 @@ Conceptualmente representa las configuraciones que van a determinar, comó se va
 
     > Previsualización del archivo
 
-    [ir a archivo configtx.yml](/Fabric-blockTick/blocktick-network/configtx.yaml)
+    [ir a archivo configtx.yml](/blocktick-network/configtx.yaml)
 
 * Ejecutamos los siguientes comandos
 
@@ -110,7 +110,7 @@ Creamos el directorio de trabajo /base.
 
     > Previsualización del archivo
 
-    [ir a archivo peer-base.yaml](/Fabric-blockTick/blocktick-network/base/peer-base.yaml)
+    [ir a archivo peer-base.yaml](/blocktick-network/base/peer-base.yaml)
 
 ### Contenedores de los participantes y del servicio de ordenamiento
 
@@ -122,7 +122,7 @@ Creamos el directorio de trabajo /base.
 
     > Previsualización del archivo
 
-    [ir a archivo docker-compose-base.yml](/Fabric-blockTick/blocktick-network/base/docker-compose-base.yaml)
+    [ir a archivo docker-compose-base.yml](/blocktick-network/base/docker-compose-base.yaml)
 
 ### Orquestamos los contenedores creados y ademas se agregan las bases de datos y servicios CA y CLI
 
@@ -135,7 +135,7 @@ Creamos el directorio de trabajo /base.
     > Previsualización del archivo :
 
 
-    [ir a archivo docker-compose-cli-couchdb.yaml](/Fabric-blockTick/blocktick-network/docker-compose-cli-couchdb.yaml)
+    [ir a archivo docker-compose-cli-couchdb.yaml](/blocktick-network/docker-compose-cli-couchdb.yaml)
 
 ### Levantamos todo
 
@@ -219,7 +219,7 @@ En este caso vamos a usar Golang y se va a llamar movies,
 
     > Previsualización del archivo
 
-[ver archivo movies.go](/Fabric-blockTick/chaincode/movies/movies.go)
+[ver archivo movies.go](/chaincode/movies/movies.go)
 
 ### Agregamos nuestro chaincode a la red
 
