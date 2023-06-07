@@ -14,7 +14,7 @@ mkdir channel-artifacts
 
 ## Arquitectura 
 
-![Arquitectura ](/home/ndongo/Documentos/HYPERLEDGER/HLF-blockTick/img/APP_HLF_blocktick.png)
+![Arquitectura ](/img/APP_HLF_blocktick.png)
 
 ### Peers
 
