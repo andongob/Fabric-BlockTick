@@ -1,6 +1,16 @@
 # Proyecto de de blockchain en HLF de una aplicación de ticketing para películas
 
+## Para empezar de 0 con la arquitectura
 
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+docker volume prune
+docker network prune
+
+rm -rf crypto-config/peerOrganizations
+rm -rf crypto-config/ordererOrganizations
+rm -rf channel-artifacts/
+mkdir channel-artifacts
 
 ## Arquitectura 
 
@@ -234,7 +244,7 @@ Ahora nos conectamos al servicio de CLI ejecutamos las siguientes lineas.
 
     Nos tiene que retornar un identificador para el chaincode que vamos a usar para commitear.
     
-      movies_1:d7dcb74d448855c2b545033b3c985f92c245642198f61283dadfa24c4204f32b
+      movies_1:41c6dc97ab977ffc03ce6ec11d9636f983ff2d3267af159e35c85acc40250b0d
 
 * Instalamos el chaincode en la segunda organización
 
@@ -242,7 +252,7 @@ Ahora nos conectamos al servicio de CLI ejecutamos las siguientes lineas.
 
     Nos retorna el siguiente identificador
       
-      movies_1:d7dcb74d448855c2b545033b3c985f92c245642198f61283dadfa24c4204f32b
+      movies_1: 41c6dc97ab977ffc03ce6ec11d9636f983ff2d3267af159e35c85acc40250b0d
 
 * Instalamos el chaincode en la tercer organización
 
@@ -250,7 +260,7 @@ Ahora nos conectamos al servicio de CLI ejecutamos las siguientes lineas.
 
     Nos retorna el siguiente identificador.
 
-      movies_1:d7dcb74d448855c2b545033b3c985f92c245642198f61283dadfa24c4204f32b
+      movies_1: 41c6dc97ab977ffc03ce6ec11d9636f983ff2d3267af159e35c85acc40250b0d
 
     Observar que los identificadores deben ser los mismos.
 
@@ -259,11 +269,11 @@ En este caso solo las primera y tercera organizacion van a tener permisos de esc
    
    Para la primer organización.
 
-      peer lifecycle chaincode approveformyorg --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CHAINCODE_NAME --version $CHAINCODE_VERSION --sequence 1 --waitForEvent --signature-policy "OR ('Org1MSP.peer','Org3MSP.peer')" --package-id movies_1:d7dcb74d448855c2b545033b3c985f92c245642198f61283dadfa24c4204f32b
+      peer lifecycle chaincode approveformyorg --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CHAINCODE_NAME --version $CHAINCODE_VERSION --sequence 1 --waitForEvent --signature-policy "OR ('Org1MSP.peer','Org3MSP.peer')" --package-id movies_1:41c6dc97ab977ffc03ce6ec11d9636f983ff2d3267af159e35c85acc40250b0d
 
    Para la tercer organización.
 
-      CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.blocktick.com/users/Admin@org3.blocktick.com/msp CORE_PEER_ADDRESS=peer0.org3.blocktick.com:7051 CORE_PEER_LOCALMSPID="Org3MSP" CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.blocktick.com/peers/peer0.org3.blocktick.com/tls/ca.crt peer lifecycle chaincode approveformyorg --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CHAINCODE_NAME --version $CHAINCODE_VERSION --sequence 1 --waitForEvent --signature-policy "OR ('Org1MSP.peer','Org3MSP.peer')" --package-id movies_1:d7dcb74d448855c2b545033b3c985f92c245642198f61283dadfa24c4204f32b
+      CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.blocktick.com/users/Admin@org3.blocktick.com/msp CORE_PEER_ADDRESS=peer0.org3.blocktick.com:7051 CORE_PEER_LOCALMSPID="Org3MSP" CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org3.blocktick.com/peers/peer0.org3.blocktick.com/tls/ca.crt peer lifecycle chaincode approveformyorg --tls --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name $CHAINCODE_NAME --version $CHAINCODE_VERSION --sequence 1 --waitForEvent --signature-policy "OR ('Org1MSP.peer','Org3MSP.peer')" --package-id movies_1:41c6dc97ab977ffc03ce6ec11d9636f983ff2d3267af159e35c85acc40250b0d
 
    Comprobamos que las politicas esten correctas, ejecutando la siguiente linea de comando:
       
