@@ -54,11 +54,11 @@ El cliente utiliza el SDK de Hyperledger fabric para enviar una transaccion a la
 
 Conceptualmente representan las configuraciones que van a representar la identidad de nuestros participantes.
 
-* Creamos el archivo crypto-config.yml
+* Creamos el archivo crypto-config.yaml
 
     > Previsualización del archivo
 
-    [ir a archivo crypto-config.yml](./BLOCKTICK-NETWORK//crypto-config.yaml)
+    [ir a archivo crypto-config.yml](/blocktick-network/configtx.yaml)
 
 * Ejecutamos en la terminal el comando
 
@@ -76,7 +76,7 @@ Conceptualmente representa las configuraciones que van a determinar, comó se va
 
     > Previsualización del archivo
 
-    [ir a archivo configtx.yml](./BLOCKTICK-NETWORK/configtx.yml)
+    [ir a archivo configtx.yml](/blocktick-network/configtx.yaml)
 
 * Ejecutamos los siguientes comandos
 
@@ -110,7 +110,7 @@ Creamos el directorio de trabajo /base.
 
     > Previsualización del archivo
 
-    [ir a archivo peer-base.yaml](./BLOCKTICK-NETWORK//base/peer-base.yaml)
+    [ir a archivo peer-base.yaml](/blocktick-network/base/peer-base.yaml)
 
 ### Contenedores de los participantes y del servicio de ordenamiento
 
@@ -122,7 +122,7 @@ Creamos el directorio de trabajo /base.
 
     > Previsualización del archivo
 
-    [ir a archivo docker-compose-base.yml](./BLOCKTICK-NETWORK//base/docker-compose-base.yaml)
+    [ir a archivo docker-compose-base.yml](/blocktick-network/base/docker-compose-base.yaml)
 
 ### Orquestamos los contenedores creados y ademas se agregan las bases de datos y servicios CA y CLI
 
@@ -135,7 +135,7 @@ Creamos el directorio de trabajo /base.
     > Previsualización del archivo :
 
 
-    [ir a archivo docker-compose-cli-couchdb.yaml](./BLOCKTICK-NETWORK/docker-compose-cli-couchdb.yaml)
+    [ir a archivo docker-compose-cli-couchdb.yaml](/blocktick-network/docker-compose-cli-couchdb.yaml)
 
 ### Levantamos todo
 
@@ -219,7 +219,7 @@ En este caso vamos a usar Golang y se va a llamar movies,
 
     > Previsualización del archivo
 
-[ver archivo movies.go](./chaincode/movies/movies.go)
+[ver archivo movies.go](/chaincode/movies/movies.go)
 
 ### Agregamos nuestro chaincode a la red
 
@@ -294,18 +294,7 @@ En este caso solo las primera y tercera organizacion van a tener permisos de esc
 
 ### Probamos la persisitencia de los smartcontract
 
-* Probamos que funcione todo correctamente ejecutando un ejemplo.
-  
-  Ejecutamos el caso de Set.
+> Ver sentencias  movies.go
 
-      peer chaincode invoke -o orderer.blocktick.com:7050 --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n $CHAINCODE_NAME -c '{"Args":["Set","did:3","ricardo","banana","555","Fisica","true"]}'
-
-  Corroboramos en la base de datos:
-
-
-//Observación -> no me esta dejando actualizar un Alumno, es decir generar otro estado. (a corregir)
-
-  Ejecutamos el caso de Query.
-
-      peer chaincode invoke -o orderer.blocktick.com:7050 --tls --cafile $ORDERER_CA -C $CHANNEL_NAME -n $CHAINCODE_NAME -c '{"Args":["Query","did:3"]}'
+[ver archivo movies.go](/chaincode/movies/commands.txt)
 
