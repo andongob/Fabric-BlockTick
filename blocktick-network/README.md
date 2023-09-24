@@ -2,76 +2,69 @@
 
 \---
 
-# Análisis Funcional del Chaincode para la Venta de Entradas de Cine en Blockchain
+## Análisis Funcional del Chaincode para la Venta de Entradas de Cine en Blockchain
 
 El presente documento describe el análisis funcional de un chaincode desarrollado en Go que se encargará de gestionar la venta de entradas de cine en una cadena de bloques (blockchain). El sistema se ha diseñado para administrar las ventas de entradas de cine en un teatro que tiene cuatro ventanillas de venta, cinco películas en exhibición en todo momento, y cada película se proyecta cuatro veces al día. Además, el sistema debe gestionar la entrega de una botella de agua y una bolsa de palomitas de maíz al comprador de una entrada, así como la posibilidad de que el comprador pueda cambiar el agua por Refresco en la cafetería. También se llevará un registro de las compras en la cadena de bloques.
 
 ## Requisitos Funcionales
-|**1**|*Nombre Rol*|
+|**1**|*registerTheatre*|
 | :- | :- |
 |**Descripción**|Ventanillas de Venta|
 |**Comentarios**|<p>*El sistema debe admitir la venta de entradas a través de cuatro ventanillas de venta en el teatro.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**2**|*Nombre Rol*|
+|**2**|*purchaseTicket*|
 | :- | :- |
 |**Descripción**|Compra de Entradas|
 |**Comentarios**|<p>*Los usuarios pueden comprar una o más entradas para las películas en exhibición.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**3**|*Nombre Rol*|
+|**3**|*purchaseTicket*|
 | :- | :- |
 |**Descripción**|Límite de Entradas (**promoter**)|
 |**Comentarios**|<p>*Una vez se vendan 100 entradas para una película en particular, esa función de cine se considerará llena, y no se podrán vender más entradas para esa función.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**4**|*Nombre Rol*|
+|**4**|*registerTheatre*|
 | :- | :- |
 |**Descripción**|Películas en Cartel|
 |**Comentarios**|<p>*El cine tiene cinco películas en cartél en todo momento.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**5**|*Nombre Rol*|
+|**5**|*createShow*|
 | :- | :- |
 |**Descripción**|Proyecciones Diarias|
 |**Comentarios**|<p>*Cada película se proyecta cuatro veces al día en diferentes horarios.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**6**|*Nombre Rol*|
+|**6**|*issueCoupon*|
 | :- | :- |
 |**Descripción**|Regalo con la Compra de Entrada|
 |**Comentarios**|<p>*Al comprar una entrada, el comprador recibirá automáticamente una botella de agua y una bolsa de palomitas de maíz en la Ventanilla-1.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**7**|*Nombre Rol*|
+|**7**|*fmt.Println("API::issueCoupon:End")*|
 | :- | :- |
 |**Descripción**|Impresión de Entrada y Recibo|
 |**Comentarios**|<p>*Al finalizar la compra, se imprimirá un boleto de entrada y un recibo.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**8**|*Nombre Rol*|
-| :- | :- |
-|**Descripción**|Registro en la Cadena de Bloques|
-|**Comentarios**|<p>*Todas las compras realizadas deben registrarse en la cadena de bloques para garantizar la transparencia y la inmutabilidad de la información.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**9**|*Nombre Rol*|
+|**8**|*availExchange*|
 | :- | :- |
 |**Descripción**|Intercambio de Agua por Soda|
 |**Comentarios**|<p>*El comprador tiene la opción de cambiar su botella de agua por soda en la cafetería.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**10**|*Nombre Rol*|
+|**9**|*Nombre Rol*|
 | :- | :- |
 |**Descripción**|Generación de Número Aleatorio|
 |**Comentarios**|<p>*\- La Ventanilla-1 generará un número aleatorio.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**11**|*Nombre Rol*|
+|**10**|*availExchange*|
 | :- | :- |
 |**Descripción**|Intercambio de Agua por Soda en la Cafetería|
 |**Comentarios**|<p>*Si el número aleatorio generado es par, el comprador podrá canjear su botella de agua por soda en la cafetería. Solo se admitirán las solicitudes de los primeros 200 compradores.
 * </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**12**|*Nombre Rol*|
+|**11**|*availExchange*|
 | :- | :- |
 |**Descripción**|Gestión de Inventario de Soda en la Cafetería|
 |**Comentarios**|<p>*La cafetería tendrá un inventario de soda limitado a 200 unidades. El sistema debe llevar un registro de las sodas disponibles y permitir el canje solo si hay existencias disponibles.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
 
-|**13**|*Nombre Rol*|
-| :- | :- |
-|**Descripción**|Soporte para Múltiples Teatros|
-|**Comentarios**|<p>*El sistema debe ser escalable y admitir más de un teatro en la cadena de bloques. Cada teatro tendrá sus propias funciones de cine y su inventario de entradas.* </p><p>*Para venta de entrada dentro de la plataforma*</p><p></p>|
+
 
 
 
