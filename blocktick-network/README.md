@@ -1,5 +1,84 @@
 # Proyecto de de blockchain en HLF de una aplicación de ticketing para películas
 
+# Funcional de la herramienta:
+
+A continuación, te proporcionaré un documento de análisis funcional en español para el chaincode descrito:
+
+\---
+
+\# Análisis Funcional del Chaincode para la Venta de Entradas de Cine en Blockchain
+
+\## Introducción
+
+El presente documento describe el análisis funcional de un chaincode desarrollado en Go que se encargará de gestionar la venta de entradas de cine en una cadena de bloques (blockchain). El sistema se ha diseñado para administrar las ventas de entradas de cine en un teatro que tiene cuatro ventanillas de venta, cinco películas en exhibición en todo momento, y cada película se proyecta cuatro veces al día. Además, el sistema debe gestionar la entrega de una botella de agua y una bolsa de palomitas de maíz al comprador de una entrada, así como la posibilidad de que el comprador pueda cambiar el agua por soda en la cafetería. También se llevará un registro de las compras en la cadena de bloques.
+
+\## Requisitos Funcionales
+
+\### 1. Ventanillas de Venta
+
+\- El sistema debe admitir la venta de entradas a través de cuatro ventanillas de venta en el teatro.
+
+\### 2. Compra de Entradas
+
+\- Los usuarios pueden comprar una o más entradas para las películas en exhibición.
+
+\### 3. Límite de Entradas
+
+\- Una vez se vendan 100 entradas para una película en particular, esa función de cine se considerará llena, y no se podrán vender más entradas para esa función.
+
+\### 4. Películas en Exhibición
+
+\- El teatro tiene cinco películas en exhibición en todo momento.
+
+\### 5. Proyecciones Diarias
+
+\- Cada película se proyecta cuatro veces al día en diferentes horarios.
+
+\### 6. Regalo con Compra de Entrada
+
+\- Al comprar una entrada, el comprador recibirá automáticamente una botella de agua y una bolsa de palomitas de maíz en la Ventanilla-1.
+
+\### 7. Impresión de Entrada y Recibo
+
+\- Al finalizar la compra, se imprimirá un boleto de entrada y un recibo.
+
+\### 8. Registro en la Cadena de Bloques
+
+\- Todas las compras realizadas deben registrarse en la cadena de bloques para garantizar la transparencia y la inmutabilidad de la información.
+
+\### 9. Intercambio de Agua por Soda
+
+\- El comprador tiene la opción de cambiar su botella de agua por soda en la cafetería.
+
+\### 10. Generación de Número Aleatorio
+
+\- La Ventanilla-1 generará un número aleatorio.
+
+
+
+\### 11. Intercambio de Agua por Soda en la Cafetería
+
+\- Si el número aleatorio generado es par, el comprador podrá canjear su botella de agua por soda en la cafetería. Solo se admitirán las solicitudes de los primeros 200 compradores.
+
+\### 12. Gestión de Inventario de Soda en la Cafetería
+
+\- La cafetería tendrá un inventario de soda limitado a 200 unidades. El sistema debe llevar un registro de las sodas disponibles y permitir el canje solo si hay existencias disponibles.
+
+\### 13. Soporte para Múltiples Teatros
+
+\- El sistema debe ser escalable y admitir más de un teatro en la cadena de bloques. Cada teatro tendrá sus propias funciones de cine y su inventario de entradas.
+
+\## Resumen
+
+El chaincode propuesto para la venta de entradas de cine en blockchain es un sistema completo que gestiona la venta de entradas, la entrega de regalos con las compras, la impresión de entradas y recibos, la gestión de límites de asistencia a las funciones de cine y la posibilidad de canjear agua por soda en la cafetería. Además, el sistema es escalable y puede admitir múltiples teatros con sus propias funciones y registros de inventario. La cadena de bloques garantizará la integridad y la transparencia de las transacciones realizadas en el teatro.
+
+\---
+
+Este análisis funcional proporciona una visión general de los requisitos clave del chaincode para la venta de entradas de cine en blockchain. Puedes utilizar este documento como punto de partida para el desarrollo del código y la implementación del sistema.
+
+
+# Pasos pra levantar el entorno de producción
+
 # Comenzar proyecto desde 0
 
     >     docker stop $(docker ps -a -q)
